@@ -1,0 +1,257 @@
+---
+permalink: /
+title: "Welcome!"
+excerpt: "About Me"
+author_profile: false
+redirect_from: 
+  - /about/
+  - /about.html
+---
+
+<style type="text/css">
+  body {
+    padding-bottom:20px;
+    background-color: #f7f7f7;
+  }
+  .masthead {
+    background-color: #f7f7f7; /* Apply the same background color to the top menu */
+  }
+  .greedy-nav {
+    background-color: #f7f7f7; /* Apply the same background color to the top menu */
+  }
+  .content-profile, .content-profile h1, .research h1,.research h2,.research h3,.teaching h1, .teaching h2, .teaching h3 {
+    font-family: 'Poppins',sans-serif;
+  }
+  .content-profile p {
+
+    font-size: 1em;
+  }
+  .research h3,.teaching h3 {
+    font-size: 1.4em;
+  }
+  .research ul li,.teaching ul li {
+    font-family: 'Poppins',sans-serif;
+  }
+header{display: none;}
+
+.introduction {
+  display: flex;
+    gap: 27px;
+
+}
+.page{
+  width: 100%;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.author__urls {
+  text-align: center;
+    margin-top: 31px;
+}
+.author__urls li {
+  white-space: nowrap;
+    display: inline-block;
+ 
+}
+.author__urls li:not(:first-child){
+  margin-left: 49px;
+}
+.icon-pad-right {
+  
+    margin-right: 2px;
+   
+}
+.author__avatar {
+  display: unset;
+  width: unset;
+  height: unset;
+  vertical-align: unset;
+}
+
+
+.page__title {
+    font-size: 2em; /* Increase the font size for the "Welcome!" header */
+  }
+
+@media (max-width:1280px) and (min-width:767px){
+  .page{
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+@media (max-width:1280px){
+  .image-logo-port img:first-child {
+    width: 115px !important;
+  }
+  .image-logo-port img:last-child {
+    width: 70px !important;
+  }
+  .link-cv-text {
+    margin-bottom: 12px !important;
+  }
+  .origin-text {
+    margin-bottom: 0 !important;
+  }
+}
+@media (max-width:767px){
+  .introduction {
+    flex-direction: column;
+  }
+  .teaching,.research {
+    margin-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .image-logo-port,.page__title {
+    text-align: center;
+  }
+  .content-profile {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  .profile-image {
+    text-align: center;
+  }
+  .profile-image img {
+    width: 35%;
+   
+  }
+  .author__urls li:not(:first-child) {
+    margin-left: 15px;
+}
+}
+@media (max-width:450px){
+  .research,.teaching,.content-profile {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .profile-image img {
+    width: 60%;
+}
+}
+</style>
+
+<div class="introduction" id="introduction">
+  <!-- <div class="profile-image"> -->
+    <!-- <img src="images/bio-photo.jpg"> -->
+    {% include profile_img.html %}
+  <!-- </div> -->
+  <div class="content-profile">
+    <h1 class="page__title">Welcome!</h1>
+<p>My name is Alberto. I am a PhD student in economics at <a href="https://feb.kuleuven.be/research/economics">KU Leuven</a> in Belgium, working under the supervision of <a href="https://sites.google.com/site/proebstingchristian/home">Christian Proebsting</a>.</p>
+<p>My research interest lies in (international) macroeconomics, where I study how shocks propagate across regions within a country or among countries in a monetary union. I combine novel microdata to analyze the local effects of aggregate shocks with structural models to study their implications for aggregate and distributional outcomes.</p>
+
+<p>My research is funded by the Research Foundation Flanders (FWO) fundamental research grant.</p>
+
+<p class="origin-text">I grew up in the beautiful wine region of <a href="https://www.spain.info/en/region/la-rioja/">La Rioja</a>, in Northern Spain.</p>
+
+<p class="link-cv-text"><a href="images/paviasoto_academic_cv.pdf">Click here to see my CV.</a></p>
+
+<div class="image-logo-port">
+  <img src="images/kuleuven-logo.png" alt="KU Leuven logo" style="text-align: left;width: 150px;">
+  <img src="images/fwo_kleur.png" alt="FWO logo" style="text-align: left;width: 100px;">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="portfolio-contact">
+  {% include author-urls.html %}
+</div>
+
+
+</div>
+
+
+<div class="research" id="research">
+  <h2>Research</h2>
+  <h3>Working Papers</h3>
+
+<!-- Working Papers Section -->
+<ul>
+  <li>
+   <a href="link-to-your-paper.pdf">The Role of Risk-Sharing in Attenuating Business Cycles Within Currency Unions</a><br>
+    with <a href="https://sites.google.com/site/proebstingchristian/home">Christian Proebsting</a><br>
+    <a href="link-to-your-slides.pdf">Slides</a><br>
+
+    <p><em><u>Best paper prize</u> RES PhD Conference 2024</em></p>
+
+    <details>
+      <summary><strong>Abstract</strong></summary>
+      A large literature has used the variance decomposition framework by Asdrubali et al. (1996) to empirically evaluate the strength of various risk-sharing mechanisms across regions in a currency union. Following this approach, we find that only 17% of GDP fluctuations translate into per-capita consumption fluctuations across U.S. states, compared to 62% for euro area countries. However, we show that the benefits of risk sharing could be significantly greater than these figures suggest. We calibrate a DSGE model of a small open economy to match these empirical findings and show that if euro area countries adopted risk-sharing mechanisms similar to those across U.S. states, the volatility of consumption would be cut by a factor of more than 3.
+    </details>
+    <details>
+      <summary><strong>Presentations (including scheduled)</strong></summary>
+        <ul>
+          <li>2023:
+            <ul>
+              <li>KU Leuven macro seminar (Leuven, Belgium)</li>
+              <li>KOF-ETH Zürich-University of Zurich* (Zurich, Switzerland)</li>
+            </ul>
+          </li>
+          <li>2024:
+            <ul>
+              <li>KU Leuven macro seminar (Leuven, Belgium)</li>
+              <li>13th PhD Student Conference in International Macroeconomics (Paris, France)</li>
+              <li>Ghent University Workshop on Empirical Macroeconomics (Ghent, Belgium; poster)</li>
+              <li>IAAE 2024 (Thessaloniki, Greece)</li>
+              <li>University of Nottingham* (Nottingham, UK)</li>
+              <li>RES PhD Conference 2024 (Portsmouth, UK)</li>
+            </ul>
+          </li>
+        </ul>
+        <p><em>* Denotes presentations made by co-author.</em></p>
+    </details>
+  </li>
+  <!-- Add more papers as needed -->
+</ul>
+
+
+<h3>Work in Progress</h3>
+
+<!-- Work in Progress Section -->
+<ul>
+  <li>
+    Regional Business Cycles and their Impact on Aggregate Fluctuations<br>
+    
+    <details>
+      <summary><strong>Abstract</strong></summary>
+      Economic fluctuations are a recurring problem for economists and policymakers. Still, our understanding of the sources driving these economic fluctuations remains incomplete. Traditionally, business cycles are studied at the national level. But recently, the literature has pointed out strong regional disparities over the business cycle, putting forward the hypothesis that a large share of the national economic fluctuations we observe at the national level might originate at the regional level and propagate through the network structure of the economy.
+
+      My research studies this hypothesis by exploiting novel granular data and state-of-the-art macro models. It proceeds in three steps: First, I construct a dataset of regional business cycle indicators and compare their statistical properties to those found at the national level. Second, I study how regions respond to a specific driver of business cycles: sudden changes in global demand for their products. Third, informed by my empirical estimates I set up a multi-region, currency union model to aggregate my regional estimates and quantify the share of aggregate fluctuations that is driven by regional fluctuations. The model is then used to derive policy implications for both the United States and Europe.
+    </details>
+  </li>
+</ul>
+</div>
+
+<div class="teaching" id="teaching">
+  <h2>Teaching</h2>
+  <h3>KU Leuven (Teaching Assistant)</h3>
+
+<ul>
+  <li>
+    <strong>Advanced Topics in Macroeconomics and Policy</strong><br>
+    Academic Year: 2022-2023<br>
+    Level: Research master/PhD<br>
+    <a href="/albertopavia.github.io/files/Syllabus_topics.pdf">Syllabus</a>
+  </li>
+  <li>
+    <strong>Introduction to Macroeconomics</strong><br>
+    Academic Year: 2022-<br>
+    Level: Bachelor<br>
+    <a href="/albertopavia.github.io/files/Syllabus_intro.pdf">Syllabus</a>
+  </li>
+  <li>
+    <strong>Master thesis supervision</strong><br>
+    Academic Year: 2022-<br>
+    Level: Master, research master<br>
+  </li>
+  <!-- Add more courses as needed -->
+</ul>
+</div>
+
+
+
