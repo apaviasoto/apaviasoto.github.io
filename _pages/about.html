@@ -69,13 +69,13 @@ header{display: none;}
 }
 
 .email-obf {
-  color: #1e6bb8;
+  color: #52adc8;
   text-decoration: underline;
   cursor: pointer;
 }
 
 .email-obf:hover {
-  color: #0056b3;
+  color: #3e8196;
   text-decoration: underline;
 }
 .page__title {
@@ -281,26 +281,30 @@ header{display: none;}
 
 <script>
   // Make obfuscated email clickable without exposing it in the HTML
-  (function () {
+  document.addEventListener('DOMContentLoaded', function() {
     var el = document.querySelector('.email-obf');
     if (!el) return;
+    
     function build() {
       return el.dataset.u + '.' + el.dataset.s + '@' + el.dataset.d + '.' + el.dataset.t;
     }
+    
     function openMail() {
-      window.location.href = 'mailto:' + build();
+      window.open('mailto:' + build(), '_self');
     }
+    
     el.addEventListener('click', function (e) {
       e.preventDefault();
       openMail();
     });
+    
     el.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
         openMail();
       }
     });
-  })();
+  });
 </script>
 
 
