@@ -28,7 +28,6 @@ author:
   location         : "Leuven, Belgium"
   #employer         : "Red Brick University"
   uri              : # URL
-  # email            :  # removed to avoid exposing in static HTML
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile
@@ -347,4 +346,5 @@ tag_archive:
 compress_html:
   clippings: all
   ignore:
+    envs: development
     envs: development
