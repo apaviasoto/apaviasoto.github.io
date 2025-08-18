@@ -149,6 +149,11 @@ header{display: none;}
 
 <p class="origin-text">I grew up in <a href="https://www.spain.info/en/region/la-rioja/">La Rioja</a>, in Northern Spain.</p>
 
+<p>Feel free to reach out:
+  <span class="email-obf"
+        data-u="alberto" data-s="paviasoto" data-d="kuleuven" data-t="be"
+        role="link" tabindex="0">alberto.paviasoto[at]kuleuven.be</span>
+</p>
 
 <p class="link-cv-text"><a href="images/paviasoto_academic_cv.pdf">Click here to see my CV.</a></p>
 
@@ -264,6 +269,30 @@ header{display: none;}
   <!-- Add more courses as needed -->
 </ul>
 </div>
+
+<script>
+  // Make obfuscated email clickable without exposing it in the HTML
+  (function () {
+    var el = document.querySelector('.email-obf');
+    if (!el) return;
+    function build() {
+      return el.dataset.u + '.' + el.dataset.s + '@' + el.dataset.d + '.' + el.dataset.t;
+    }
+    function openMail() {
+      window.location.href = 'mailto:' + build();
+    }
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      openMail();
+    });
+    el.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openMail();
+      }
+    });
+  })();
+</script>
 
 
 
