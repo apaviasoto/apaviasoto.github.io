@@ -158,10 +158,9 @@ header{display: none;}
 
 <p class="origin-text">I grew up in <a href="https://www.spain.info/en/region/la-rioja/">La Rioja</a>, in Northern Spain.</p>
 
+
 <p>Feel free to reach out:
-  <span class="email-obf"
-        data-u="alberto" data-s="paviasoto" data-d="kuleuven" data-t="be"
-        role="link" tabindex="0">alberto.paviasoto[at]kuleuven.be</span>
+  <a class="email-obf" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#108;&#98;&#101;&#114;&#116;&#111;&#46;&#112;&#97;&#118;&#105;&#97;&#115;&#111;&#116;&#111;&#64;&#107;&#117;&#108;&#101;&#117;&#118;&#101;&#110;&#46;&#98;&#101;">alberto.paviasoto[at]kuleuven.be</a>
 </p>
 
 <p class="link-cv-text"><a href="images/paviasoto_academic_cv.pdf">Click here to see my CV.</a></p>
@@ -278,53 +277,6 @@ header{display: none;}
   <!-- Add more courses as needed -->
 </ul>
 </div>
-
-<script>
-// Make obfuscated email clickable
-(function() {
-  function setupEmailLink() {
-    var el = document.querySelector('.email-obf');
-    if (!el) {
-      // If element not found, try again in a moment
-      setTimeout(setupEmailLink, 100);
-      return;
-    }
-    
-    function buildEmail() {
-      return el.getAttribute('data-u') + '.' + 
-             el.getAttribute('data-s') + '@' + 
-             el.getAttribute('data-d') + '.' + 
-             el.getAttribute('data-t');
-    }
-    
-    function openEmail() {
-      var email = buildEmail();
-      window.location.href = 'mailto:' + email;
-    }
-    
-    // Add click handler
-    el.addEventListener('click', function(e) {
-      e.preventDefault();
-      openEmail();
-    });
-    
-    // Add keyboard handler for accessibility (use keydown for wider support)
-    el.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        openEmail();
-      }
-    });
-  }
-  
-  // Start setup when DOM is ready
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', setupEmailLink);
-  } else {
-    setupEmailLink();
-  }
-})();
-</script>
 
 
 
