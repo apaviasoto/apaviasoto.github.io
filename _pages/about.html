@@ -171,64 +171,35 @@ a.js-email { cursor: pointer; }
 
 <div class="portfolio-contact">
   {% include author-urls.html %}
-  <!-- removed plain "Email me" link to avoid crawlable href -->
+  <!-- Keep a JS-built link as an alternative entry point -->
+  <a class="js-email" href="#" data-u="alberto" data-s="paviasoto" data-d="kuleuven" data-t="be">Email me</a>
   <noscript>Enable JavaScript to view my email link.</noscript>
 </div>
 
 <script>
-  // Obfuscated email: inject icon into the existing author links and build mailto only on interaction.
+  // Assemble email only on interaction; keeps address out of static HTML/DOM
   (function () {
-    // Append email icon into the existing author list so it looks like before
-    document.addEventListener('DOMContentLoaded', function () {
-      var list = document.querySelector('.author__urls');
-      if (!list) return;
-      var li = document.createElement('li');
-      var a = document.createElement('a');
-      a.className = 'js-email';
-      a.href = '#';
-      a.title = 'Email';
-      a.rel = 'nofollow noopener';
-      a.dataset.u = 'alberto';
-      a.dataset.s = 'paviasoto';
-      a.dataset.d = 'kuleuven';
-      a.dataset.t = 'be';
-
-      var i = document.createElement('i');
-      i.className = 'fas fa-fw fa-envelope';
-      i.setAttribute('aria-hidden', 'true');
-
-      var span = document.createElement('span');
-      span.className = 'label';
-      span.textContent = 'Email';
-
-      a.appendChild(i);
-      a.appendChild(span);
-      li.appendChild(a);
-      list.appendChild(li);
-    });
-
-    function build(el) {
-      return el.dataset.u + '.' + el.dataset.s + '@' + el.dataset.d + '.' + el.dataset.t;
-    }
-
-    // Delegate clicks to avoid attaching listeners to future elements
-    document.addEventListener('click', function (e) {
-      var el = e.target.closest('.js-email, .email-obf');
-      if (!el) return;
-      e.preventDefault();
-      var addr = build(el);
-      window.location.href = 'mailto:' + addr;
-    });
-
-    // Keyboard support for the obfuscated span
-    document.addEventListener('keydown', function (e) {
-      var el = e.target.closest('.email-obf');
-      if (!el) return;
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        var addr = build(el);
+    var els = document.querySelectorAll('.js-email, .email-obf');
+    if (!els.length) return;
+    els.forEach(function (el) {
+      function build() {
+        return el.dataset.u + '.' + el.dataset.s + '@' + el.dataset.d + '.' + el.dataset.t;
+      }
+      function openMail() {
+        var addr = build();
         window.location.href = 'mailto:' + addr;
       }
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openMail();
+      });
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openMail();
+        }
+      });
+      el.setAttribute('rel', 'nofollow noopener');
     });
   })();
 </script>
