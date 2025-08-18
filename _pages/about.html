@@ -67,9 +67,7 @@ header{display: none;}
   height: unset;
   vertical-align: unset;
 }
-/* Make JS email link look clickable */
-a.js-email { cursor: pointer; }
-.email-obf { cursor: pointer; text-decoration: underline; }
+
 
 .page__title {
     font-size: 2em; /* Increase the font size for the "Welcome!" header */
@@ -151,11 +149,6 @@ a.js-email { cursor: pointer; }
 
 <p class="origin-text">I grew up in <a href="https://www.spain.info/en/region/la-rioja/">La Rioja</a>, in Northern Spain.</p>
 
-<p>Feel free to reach out:
-  <span class="email-obf"
-        data-u="alberto" data-s="paviasoto" data-d="kuleuven" data-t="be"
-        role="link" tabindex="0">alberto.paviasoto[at]kuleuven.be</span>
-</p>
 
 <p class="link-cv-text"><a href="images/paviasoto_academic_cv.pdf">Click here to see my CV.</a></p>
 
@@ -171,38 +164,7 @@ a.js-email { cursor: pointer; }
 
 <div class="portfolio-contact">
   {% include author-urls.html %}
-  <!-- Keep a JS-built link as an alternative entry point -->
-  <a class="js-email" href="#" data-u="alberto" data-s="paviasoto" data-d="kuleuven" data-t="be">Email me</a>
-  <noscript>Enable JavaScript to view my email link.</noscript>
 </div>
-
-<script>
-  // Assemble email only on interaction; keeps address out of static HTML/DOM
-  (function () {
-    var els = document.querySelectorAll('.js-email, .email-obf');
-    if (!els.length) return;
-    els.forEach(function (el) {
-      function build() {
-        return el.dataset.u + '.' + el.dataset.s + '@' + el.dataset.d + '.' + el.dataset.t;
-      }
-      function openMail() {
-        var addr = build();
-        window.location.href = 'mailto:' + addr;
-      }
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
-        openMail();
-      });
-      el.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openMail();
-        }
-      });
-      el.setAttribute('rel', 'nofollow noopener');
-    });
-  })();
-</script>
 
 
 </div>
