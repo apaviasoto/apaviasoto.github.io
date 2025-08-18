@@ -149,6 +149,11 @@ header{display: none;}
 
 <p class="origin-text">I grew up in <a href="https://www.spain.info/en/region/la-rioja/">La Rioja</a>, in Northern Spain.</p>
 
+<p>Feel free to reach out:
+  <span class="email-obf"
+        data-u="alberto" data-s="paviasoto" data-d="kuleuven" data-t="be"
+        role="link" tabindex="0">alberto.paviasoto[at]kuleuven.be</span>
+</p>
 
 <p class="link-cv-text"><a href="images/paviasoto_academic_cv.pdf">Click here to see my CV.</a></p>
 
@@ -164,7 +169,56 @@ header{display: none;}
 
 <div class="portfolio-contact">
   {% include author-urls.html %}
+  <!-- email icon injected via JS to avoid exposing address in static HTML -->
 </div>
+
+<script>
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      var list = document.querySelector('.author__urls');
+      if (!list) return;
+
+      // Create icon identical to theme output
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#';
+      a.title = 'Email';
+      a.className = 'js-email';
+      a.rel = 'nofollow noopener';
+      a.setAttribute('aria-label', 'Email');
+      // address parts (kept out of static HTML as a single string)
+      a.dataset.u = 'alberto';
+      a.dataset.s = 'paviasoto';
+      a.dataset.d = 'kuleuven';
+      a.dataset.t = 'be';
+
+      var i = document.createElement('i');
+      i.className = 'fas fa-fw fa-envelope';
+      i.setAttribute('aria-hidden', 'true');
+
+      var span = document.createElement('span');
+      span.className = 'label';
+      span.textContent = 'Email';
+
+      a.appendChild(i);
+      a.appendChild(span);
+      li.appendChild(a);
+      list.appendChild(li);
+    });
+
+    function build(el) {
+      return el.dataset.u + '.' + el.dataset.s + '@' + el.dataset.d + '.' + el.dataset.t;
+    }
+
+    // Open mail client on click without exposing address in DOM
+    document.addEventListener('click', function (e) {
+      var el = e.target.closest('.js-email');
+      if (!el) return;
+      e.preventDefault();
+      window.location.href = 'mailto:' + build(el);
+    });
+  })();
+</script>
 
 
 </div>
