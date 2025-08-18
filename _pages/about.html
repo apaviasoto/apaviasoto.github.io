@@ -280,32 +280,53 @@ header{display: none;}
 </div>
 
 <script>
-  // Make obfuscated email clickable without exposing it in the HTML
-  document.addEventListener('DOMContentLoaded', function() {
+// Make obfuscated email clickable
+(function() {
+  function setupEmailLink() {
     var el = document.querySelector('.email-obf');
-    if (!el) return;
-    
-    function build() {
-      return el.dataset.u + '.' + el.dataset.s + '@' + el.dataset.d + '.' + el.dataset.t;
+    if (!el) {
+      // If element not found, try again in a moment
+      setTimeout(setupEmailLink, 100);
+      return;
     }
     
-    function openMail() {
-      window.open('mailto:' + build(), '_self');
+    function buildEmail() {
+      return el.getAttribute('data-u') + '.' + 
+             el.getAttribute('data-s') + '@' + 
+             el.getAttribute('data-d') + '.' + 
+             el.getAttribute('data-t');
     }
     
-    el.addEventListener('click', function (e) {
+    function openEmail() {
+      var email = buildEmail();
+      window.location.href = 'mailto:' + email;
+    }
+    
+    // Add click handler
+    el.addEventListener('click', function(e) {
       e.preventDefault();
-      openMail();
+      openEmail();
     });
     
-    el.addEventListener('keydown', function (e) {
+    // Add keyboard handler for accessibility (use keydown for wider support)
+    el.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openMail();
+        openEmail();
       }
     });
-  });
+  }
+  
+  // Start setup when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupEmailLink);
+  } else {
+    setupEmailLink();
+  }
+})();
 </script>
+
+
 
 
 
