@@ -12,7 +12,7 @@ title                    : "Alberto Pavia"
 title_separator          : "-"
 name                     : &name "Alberto Pavia"
 description              : &description "personal description"
-url                      : "" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+url                      : "https://albertopavia.com" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "apaviasoto/apaviasoto.github.io"
 
