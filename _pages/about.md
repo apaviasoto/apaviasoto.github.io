@@ -6,6 +6,7 @@ author_profile: true
 redirect_from: 
   - /about/
   - /about.html
+sitemap: false
 ---
 
 My name is Alberto. I am a PhD student in economics at KU Leuven in Belgium, working under the supervision of [Christian Proebsting](https://sites.google.com/site/proebstingchristian/home).
