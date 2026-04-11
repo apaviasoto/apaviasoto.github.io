@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alberto Pavia – PhD Candidate in Economics</title>
+  <meta name="description" content="Alberto Pavia – PhD Candidate in Economics at KU Leuven. Research in macroeconomics, regional business cycles, and currency unions.">
+  <link rel="canonical" href="https://albertopavia.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVIGATION
+       To rename items: edit the button text.
+       To add/remove items: copy/delete a <button class="nav-item"> line
+       (do the same in the mobile menu below).
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <button class="nav-brand" onclick="smoothScrollTo('#about')">Alberto Pavia</button>
+
+      <!-- Desktop menu -->
+      <div class="nav-desktop">
+        <button class="nav-item" data-section="about"    onclick="smoothScrollTo('#about')">About</button>
+        <button class="nav-item" data-section="research" onclick="smoothScrollTo('#research')">Research</button>
+        <button class="nav-item" data-section="teaching" onclick="smoothScrollTo('#teaching')">Teaching</button>
+        <button class="nav-item" data-section="cv"       onclick="smoothScrollTo('#cv')">CV</button>
+      </div>
+
+      <!-- Mobile hamburger -->
+      <button class="nav-mobile-btn" aria-label="Toggle menu" onclick="toggleMobile()">
+        <svg id="icon-menu"  width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        <svg id="icon-close" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="nav-mobile">
+      <div class="nav-mobile-inner">
+        <button class="nav-mobile-item" data-section="about"    onclick="smoothScrollTo('#about');closeMobile()">About</button>
+        <button class="nav-mobile-item" data-section="research" onclick="smoothScrollTo('#research');closeMobile()">Research</button>
+        <button class="nav-mobile-item" data-section="teaching" onclick="smoothScrollTo('#teaching');closeMobile()">Teaching</button>
+        <button class="nav-mobile-item" data-section="cv"       onclick="smoothScrollTo('#cv');closeMobile()">CV</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       ABOUT / HERO
+       Update bio paragraphs inside .hero-bio.
+       Update social links in .social-list.
+  ============================================================ -->
+  <section id="about" class="section-hero">
+    <div class="site-container">
+      <div class="hero-grid">
+
+        <!-- Left column: photo + social links -->
+        <div class="hero-left fade-in-up">
+          <div class="photo-wrapper">
+            <img src="images/bio-photo.jpg" alt="Alberto Pavia" class="hero-photo">
+          </div>
+
+          <div class="social-list">
+            <!-- GitHub -->
+            <a href="https://github.com/apaviasoto" target="_blank" rel="noopener noreferrer" class="social-item" aria-label="GitHub">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              <span>GitHub</span>
+              <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <!-- Bluesky -->
+            <a href="https://bsky.app/profile/albertopavia.bsky.social" target="_blank" rel="noopener noreferrer" class="social-item" aria-label="Bluesky">
+              <svg width="20" height="20" viewBox="0 0 600 530" fill="currentColor"><path d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.449-163.25-81.433C20.15 217.615 10 86.535 10 68.825c0-88.687 77.742-60.816 125.72-24.795z"/></svg>
+              <span>Bluesky</span>
+              <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/albertopavia" target="_blank" rel="noopener noreferrer" class="social-item" aria-label="LinkedIn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span>LinkedIn</span>
+              <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+            <!-- ORCID -->
+            <a href="https://orcid.org/0000-0003-0312-3092" target="_blank" rel="noopener noreferrer" class="social-item" aria-label="ORCID">
+              <svg width="20" height="20" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><circle cx="128" cy="128" r="128" fill="currentColor"/><path d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z" fill="white"/></svg>
+              <span>ORCID</span>
+              <svg class="ext-icon" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right column: name, bio, actions -->
+        <div class="hero-right">
+
+          <!-- Name block -->
+          <div class="hero-intro fade-in-up delay-100">
+            <p class="hero-greeting">Welcome!</p>
+            <h1 class="hero-name">Alberto Pavia</h1>
+            <p class="hero-title">PhD Candidate in Economics</p>
+          </div>
+
+          <!-- Bio paragraphs — edit each <p> to update your bio -->
+          <div class="hero-bio fade-in-up delay-200">
+            <p>I am a PhD candidate in economics at <a href="https://feb.kuleuven.be/research/economics">KU Leuven</a> in Belgium, supervised by <a href="https://sites.google.com/site/proebstingchristian/home">Christian Proebsting</a>.</p>
+            <p>During the academic year 2025–2026, I am visiting the Department of Economics at <a href="https://econ.berkeley.edu/">UC Berkeley</a>, hosted by <a href="https://eml.berkeley.edu/~jsteinsson/">Jón Steinsson</a>, supported by a <a href="https://www.fulbrightschuman.eu/grantees/">Fulbright Schuman grant</a>.</p>
+            <p>My research focuses on <strong>macroeconomics</strong>, where I study how shocks propagate across regions within a country or among countries in a monetary union. I combine granular microdata to analyze the local effects of aggregate shocks with structural models to study their implications for aggregate and distributional outcomes.</p>
+            <p>My research is funded by the Research Foundation Flanders (FWO) fundamental research grant.</p>
+            <p>I grew up in <a href="https://www.spain.info/en/region/la-rioja/">La Rioja</a>, in Northern Spain.</p>
+            <p>If you have any comments, thoughts, or simply want to talk about research, feel free to reach out!</p>
+          </div>
+
+          <!-- Institutional logos -->
+          <div class="hero-logos fade-in-up delay-200">
+            <img src="images/kuleuven-logo.png" alt="KU Leuven">
+            <img src="images/fwo_kleur.png" alt="FWO – Research Foundation Flanders">
+          </div>
+
+          <!-- Email button -->
+          <div class="fade-in-up delay-300">
+            <button class="email-btn" onclick="handleEmail()">
+              <div class="email-btn-bg"></div>
+              <!-- Mail icon -->
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="email-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span id="email-text">Contact Me</span>
+              <!-- Arrow (hidden after reveal) -->
+              <svg id="email-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              <!-- Copy button (shown after reveal) -->
+              <button id="email-copy-btn" style="display:none" class="copy-btn" onclick="copyEmail(event)" title="Copy email address">
+                <svg id="copy-icon"  width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg id="check-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><polyline points="20 6 9 17 4 12"/></svg>
+              </button>
+            </button>
+            <p id="email-note" class="email-note" style="display:none">Click again to open email client</p>
+          </div>
+
+          <!-- Quick action links -->
+          <div class="hero-links fade-in-up delay-400">
+            <a href="#research" class="outline-btn" onclick="event.preventDefault(); smoothScrollTo('#research')">
+              View Research
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a href="images/paviasoto_academic_cv.pdf" class="outline-btn" target="_blank" rel="noopener noreferrer">
+              Download CV
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          </div>
+
+        </div><!-- /hero-right -->
+      </div><!-- /hero-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESEARCH
+       To add a new paper: copy the <li class="paper-item"> block.
+       To add a new WIP project: copy the WIP <li> block.
+  ============================================================ -->
+  <section id="research" class="section-content">
+    <div class="site-container">
+      <div class="content-grid">
+
+        <div><h2 class="sticky-heading">Research</h2></div>
+
+        <div class="content-body">
+
+          <!-- Working Papers -->
+          <div class="subsection">
+            <h3 class="subsection-label">Working Papers</h3>
+            <ul class="papers-list">
+
+              <!-- ── PAPER 1 ──────────────────────────────────────── -->
+              <li class="paper-item">
+                <span class="paper-title-text">The Role of Risk-Sharing in Attenuating Business Cycles Within Currency Unions</span>
+                <p class="paper-authors">with <a href="https://sites.google.com/site/proebstingchristian/home">Christian Proebsting</a></p>
+                <div class="paper-links-row">
+                  <a href="files/draft%202510.pdf" target="_blank" rel="noopener noreferrer" class="paper-link-item">Draft</a>
+                </div>
+                <div class="award-badge">
+                  <!-- Trophy icon -->
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                  Best paper prize &middot; RES PhD Conference 2024
+                </div>
+                <details>
+                  <summary>Abstract</summary>
+                  <p class="abstract-text">Lacking monetary policy, member states of a currency union rely on risk sharing mechanisms to attenuate state-specific business cycles. We show that risk sharing not only directly smooths consumption but also indirectly reduces the volatility of income by stabilizing demand. We causally estimate both direct and indirect effects by exploiting regional variation in military buildups across U.S. states. An increase in external demand amounting to 1% of state GDP raises income by 1.31%, with 47% of this increase passing through to consumption. This pass-through is significantly higher than traditional unconditional estimates (14%). A multi-region model that incorporates multiple risk-sharing channels rationalizes these findings and shows that risk sharing between U.S. states reduces state-level consumption volatility by a factor of 3.8, with indirect effects accounting for close to half of this reduction. Risk-sharing channels act as substitutes and have heterogeneous benefits across states, with credit markets rather than capital markets providing the greatest smoothing.</p>
+                </details>
+              </li>
+              <!-- ── END PAPER 1 ──────────────────────────────────── -->
+
+            </ul>
+          </div>
+
+          <!-- Work in Progress -->
+          <div class="subsection">
+            <h3 class="subsection-label">Work in Progress</h3>
+            <ul class="papers-list">
+
+              <!-- ── WIP 1 ────────────────────────────────────────── -->
+              <li class="paper-item">
+                <span class="wip-title">Regional Business Cycles and their Impact on Aggregate Fluctuations</span>
+              </li>
+              <!-- ── END WIP 1 ────────────────────────────────────── -->
+
+            </ul>
+          </div>
+
+          <!-- Presentations (collapsible) -->
+          <div class="presentations-section">
+            <button class="presentations-toggle" onclick="togglePresentations()" aria-expanded="false">
+              <!-- Presentation/screen icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Presentations (including scheduled)</span>
+              <svg id="presentations-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+
+            <div id="presentations-content" class="presentations-content">
+              <div class="presentations-inner">
+
+                <!-- 2025 -->
+                <div>
+                  <h4 class="pres-year">2025:</h4>
+                  <ul class="pres-list">
+                    <li><span class="pres-name">18th RGS Doctoral Conference</span> <span class="pres-loc">(Dortmund, Germany)</span></li>
+                    <li><span class="pres-name">T2M</span> <span class="pres-loc">(CREST, France)</span></li>
+                    <li><span class="pres-name">5th Sailing the Macro Workshop<span class="pres-coauthor">*</span></span> <span class="pres-loc">(Siracusa, Italy)</span></li>
+                    <li><span class="pres-name">San Francisco Fed Brownbag</span> <span class="pres-loc">(San Francisco, U.S.)</span></li>
+                    <li><span class="pres-name">UC Berkeley Macro Colloquium</span> <span class="pres-loc">(Berkeley, U.S.)</span></li>
+                  </ul>
+                </div>
+
+                <!-- 2024 -->
+                <div>
+                  <h4 class="pres-year">2024:</h4>
+                  <ul class="pres-list">
+                    <li><span class="pres-name">KU Leuven macro seminar</span> <span class="pres-loc">(Leuven, Belgium)</span></li>
+                    <li><span class="pres-name">13th PhD Student Conference in International Macroeconomics</span> <span class="pres-loc">(Paris, France)</span></li>
+                    <li><span class="pres-name">Ghent University Workshop on Empirical Macroeconomics</span> <span class="pres-loc">(Ghent, Belgium; poster)</span></li>
+                    <li><span class="pres-name">IAAE 2024</span> <span class="pres-loc">(Thessaloniki, Greece)</span></li>
+                    <li><span class="pres-name">University of Nottingham<span class="pres-coauthor">*</span></span> <span class="pres-loc">(Nottingham, UK)</span></li>
+                    <li><span class="pres-name">RES PhD Conference 2024</span> <span class="pres-loc">(Portsmouth, UK)</span></li>
+                  </ul>
+                </div>
+
+                <!-- 2023 -->
+                <div>
+                  <h4 class="pres-year">2023:</h4>
+                  <ul class="pres-list">
+                    <li><span class="pres-name">KU Leuven macro seminar</span> <span class="pres-loc">(Leuven, Belgium)</span></li>
+                    <li><span class="pres-name">KOF-ETH Z&uuml;rich-University of Zurich<span class="pres-coauthor">*</span></span> <span class="pres-loc">(Zurich, Switzerland)</span></li>
+                  </ul>
+                </div>
+
+                <p class="pres-footnote"><span class="pres-coauthor">*</span> Denotes presentations made by co-author.</p>
+              </div>
+            </div>
+          </div><!-- /presentations -->
+
+        </div><!-- /content-body -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TEACHING
+       To add a course: copy a <div class="course-card"> block.
+       Level badges: badge-phd / badge-master / badge-bachelor
+  ============================================================ -->
+  <section id="teaching" class="section-content">
+    <div class="site-container">
+      <div class="content-grid">
+
+        <div><h2 class="sticky-heading">Teaching</h2></div>
+
+        <div class="content-body">
+          <div>
+            <div class="teaching-header">
+              <h3 class="teaching-institution">KU Leuven</h3>
+              <p class="teaching-role">Teaching Assistant</p>
+            </div>
+
+            <div class="courses-list">
+
+              <!-- ── COURSE 1 ──────────────────────────────────── -->
+              <div class="course-card">
+                <div class="course-left">
+                  <div class="course-title-row">
+                    <h4 class="course-name">Advanced Topics in Macroeconomics and Policy</h4>
+                    <span class="level-badge badge-phd">Research Master / PhD</span>
+                  </div>
+                  <p class="course-years">Academic Year: 2022–2023</p>
+                </div>
+                <a href="files/Syllabus_topics.pdf" target="_blank" rel="noopener noreferrer" class="syllabus-link">
+                  Syllabus
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+
+              <!-- ── COURSE 2 ──────────────────────────────────── -->
+              <div class="course-card">
+                <div class="course-left">
+                  <div class="course-title-row">
+                    <h4 class="course-name">Introduction to Macroeconomics</h4>
+                    <span class="level-badge badge-bachelor">Bachelor</span>
+                  </div>
+                  <p class="course-years">Academic Year: 2022–</p>
+                </div>
+                <a href="files/Syllabus_intro.pdf" target="_blank" rel="noopener noreferrer" class="syllabus-link">
+                  Syllabus
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+
+              <!-- ── COURSE 3 ──────────────────────────────────── -->
+              <div class="course-card">
+                <div class="course-left">
+                  <div class="course-title-row">
+                    <h4 class="course-name">Master Thesis Supervision</h4>
+                    <span class="level-badge badge-master">Master</span>
+                  </div>
+                  <p class="course-years">Academic Year: 2022–</p>
+                </div>
+              </div>
+
+            </div><!-- /courses-list -->
+          </div>
+        </div><!-- /content-body -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CV
+       Update the href to point to your current CV PDF.
+  ============================================================ -->
+  <section id="cv" class="section-content">
+    <div class="site-container">
+      <div class="content-grid">
+        <div><h2 class="sticky-heading">CV</h2></div>
+        <div class="content-body">
+          <p class="cv-text">Please <a href="images/paviasoto_academic_cv.pdf" target="_blank" rel="noopener noreferrer">click here</a> to read my full curriculum vitae.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="site-container">
+      <div class="footer-inner">
+        <span>&copy; 2025 Alberto Pavia</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
