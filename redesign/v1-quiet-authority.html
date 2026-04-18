@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alberto Pavia — PhD Candidate in Economics</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --paper:       oklch(0.985 0.005 75);
+    --paper-2:     oklch(0.97 0.006 75);
+    --ink:         oklch(0.22 0.01 265);
+    --ink-soft:    oklch(0.35 0.01 265);
+    --muted:       oklch(0.50 0.01 265);
+    --muted-2:     oklch(0.65 0.01 265);
+    --rule:        oklch(0.88 0.008 80);
+    --rule-soft:   oklch(0.93 0.006 80);
+    --accent:      oklch(0.38 0.08 250);   /* muted ink blue */
+    --accent-soft: oklch(0.92 0.02 250);
+
+    --serif: 'Fraunces', 'Iowan Old Style', 'Palatino', Georgia, serif;
+    --sans:  'Inter Tight', system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    --mono:  'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+
+    --maxw: 1120px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 3px; text-decoration-thickness: 1px; transition: color .2s, text-decoration-color .2s; }
+  a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+  ::selection { background: var(--accent-soft); color: var(--ink); }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 2rem; }
+
+  /* ─────────────── NAV ─────────────── */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in oklch, var(--paper) 92%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .nav-inner {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: 1.1rem 2rem;
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 2rem;
+  }
+  .nav-brand {
+    font-family: var(--serif);
+    font-size: 1.05rem; font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-brand em { font-style: italic; font-weight: 400; color: var(--muted); }
+  .nav-links { display: flex; gap: 1.75rem; align-items: baseline; }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.85rem; font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ─────────────── HERO ─────────────── */
+  .hero { padding: 5.5rem 0 5rem; }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 4.5rem;
+    align-items: start;
+  }
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .hero { padding: 3rem 0 3rem; }
+  }
+
+  .portrait {
+    width: 220px; height: 264px;
+    background: var(--paper-2);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .portrait img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: .5rem;
+    background-image: repeating-linear-gradient(135deg, transparent 0 11px, color-mix(in oklch, var(--muted) 7%, transparent) 11px 12px);
+  }
+  .portrait-placeholder .monogram {
+    font-family: var(--serif); font-size: 3.25rem; font-weight: 400;
+    color: var(--ink-soft); letter-spacing: -0.02em;
+  }
+  .portrait-placeholder .label {
+    font-family: var(--mono); font-size: .65rem;
+    color: var(--muted-2); text-transform: uppercase; letter-spacing: .12em;
+  }
+
+  .meta-list { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .55rem; }
+  .meta-list a {
+    font-family: var(--sans); font-size: .82rem; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    display: inline-flex; align-items: center; gap: .5rem;
+    transition: color .2s;
+  }
+  .meta-list a:hover { color: var(--accent); }
+  .meta-list svg { flex-shrink: 0; opacity: .8; }
+
+  /* Hero right column */
+  .hero-heading {
+    font-family: var(--serif);
+    font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    line-height: 1.02;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  .hero-affiliation {
+    margin-top: 1.25rem;
+    font-family: var(--sans); font-size: 1.05rem; font-weight: 400;
+    color: var(--muted); letter-spacing: 0.005em;
+    display: flex; flex-wrap: wrap; align-items: baseline;
+    column-gap: .75rem; row-gap: .4rem;
+    line-height: 1.4;
+  }
+  .hero-affiliation .sep { color: var(--muted-2); }
+  .hero-affiliation strong { color: var(--ink-soft); font-weight: 500; }
+
+  .hero-bio {
+    margin-top: 2.5rem;
+    display: flex; flex-direction: column; gap: 1.1rem;
+    font-family: var(--sans); font-size: 1.02rem;
+    color: var(--ink-soft); line-height: 1.7;
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+  .hero-bio strong { color: var(--ink); font-weight: 600; }
+
+  .hero-actions {
+    margin-top: 2.25rem;
+    display: flex; flex-wrap: wrap; gap: .75rem;
+    align-items: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: .5rem;
+    font-family: var(--sans); font-size: .875rem; font-weight: 500;
+    padding: .65rem 1rem;
+    border: 1px solid var(--rule);
+    background: transparent; color: var(--ink);
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color .2s, color .2s, background .2s;
+  }
+  .btn:hover { border-color: var(--ink-soft); color: var(--ink); text-decoration: none; }
+  .btn.primary {
+    background: var(--ink); color: var(--paper);
+    border-color: var(--ink);
+  }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); color: var(--paper); }
+  .btn svg { width: 14px; height: 14px; }
+
+  .hero-logos {
+    margin-top: 2.5rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--rule-soft);
+    display: flex; align-items: center; gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .hero-logos .logo-note {
+    font-family: var(--mono); font-size: .65rem;
+    text-transform: uppercase; letter-spacing: .12em;
+    color: var(--muted-2);
+  }
+  .hero-logos .logo-chip {
+    height: 32px; padding: 0 .9rem;
+    display: inline-flex; align-items: center;
+    border: 1px solid var(--rule);
+    color: var(--muted);
+    font-family: var(--sans); font-size: .8rem; font-weight: 500;
+    letter-spacing: .01em;
+  }
+
+  /* ─────────────── SECTIONS ─────────────── */
+  .section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--rule-soft);
+  }
+  .section-grid {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 4rem;
+  }
+  @media (max-width: 820px) {
+    .section-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .section { padding: 3.5rem 0; }
+  }
+
+  .section-label {
+    position: sticky; top: 5rem;
+    font-family: var(--mono);
+    font-size: .72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--muted);
+  }
+  .section-label .num {
+    display: block;
+    font-size: .6rem;
+    color: var(--muted-2);
+    margin-bottom: .5rem;
+  }
+
+  .section-body { display: flex; flex-direction: column; gap: 3rem; }
+
+  .subhead {
+    font-family: var(--sans);
+    font-size: .72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--muted);
+    padding-bottom: .9rem;
+    border-bottom: 1px solid var(--rule-soft);
+    margin-bottom: 1.75rem;
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .subhead .count { color: var(--muted-2); font-weight: 500; letter-spacing: .06em; }
+
+  /* ─────────────── PAPERS ─────────────── */
+  .paper {
+    padding-bottom: 2.5rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .paper:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+
+  .paper-title {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .paper-title a { color: inherit; text-decoration: none; }
+  .paper-title a:hover { color: var(--accent); }
+
+  .paper-authors {
+    margin-top: .6rem;
+    font-family: var(--sans);
+    font-size: .95rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .paper-authors a { color: var(--muted); text-decoration-color: var(--rule); }
+  .paper-authors a:hover { color: var(--accent); text-decoration-color: var(--accent); }
+
+  .paper-links {
+    margin-top: 1rem;
+    display: flex; gap: .5rem; flex-wrap: wrap;
+  }
+  .paper-link {
+    font-family: var(--sans); font-size: .8rem; font-weight: 500;
+    color: var(--ink);
+    padding: .35rem .7rem;
+    border: 1px solid var(--rule);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: .4rem;
+    transition: all .2s;
+  }
+  .paper-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+  .paper-link svg { width: 11px; height: 11px; opacity: .6; }
+
+  .paper-award {
+    margin-top: 1rem;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: .95rem;
+    color: var(--ink-soft);
+    display: inline-flex; align-items: baseline; gap: .5rem;
+  }
+  .paper-award::before {
+    content: "†";
+    font-style: normal;
+    color: var(--accent);
+    font-size: .95rem;
+    transform: translateY(-.05em);
+  }
+
+  .paper-abstract {
+    margin-top: 1.5rem;
+    font-family: var(--serif);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 68ch;
+    font-variation-settings: "opsz" 14;
+  }
+  .paper-abstract::first-letter {
+    font-size: 1.35em;
+    padding-right: .05em;
+  }
+  .paper-abstract-label {
+    font-family: var(--mono);
+    font-size: .65rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--muted-2);
+    display: block;
+    margin-bottom: .6rem;
+  }
+
+  .wip-list { display: flex; flex-direction: column; gap: 1rem; }
+  .wip-item {
+    font-family: var(--serif);
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: var(--ink);
+    padding-left: 1rem;
+    border-left: 2px solid var(--rule);
+    font-style: italic;
+  }
+
+  /* ─────────────── PRESENTATIONS ─────────────── */
+  .pres {
+    border-top: 1px solid var(--rule-soft);
+    padding-top: 2rem;
+    margin-top: 2.5rem;
+  }
+  details.pres-details { }
+  details.pres-details summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex; align-items: center; gap: .6rem;
+    font-family: var(--mono);
+    font-size: .7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .16em;
+    color: var(--muted);
+    padding: .5rem 0;
+  }
+  details.pres-details summary::-webkit-details-marker { display: none; }
+  details.pres-details summary .arrow { transition: transform .3s; }
+  details.pres-details[open] summary .arrow { transform: rotate(90deg); }
+  details.pres-details[open] summary { color: var(--ink); }
+
+  .pres-grid {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1rem 2rem;
+    margin-top: 1.75rem;
+    font-family: var(--sans);
+  }
+  .pres-year-cell {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: var(--accent);
+    font-feature-settings: "lnum", "tnum";
+    line-height: 1;
+    padding-top: .2rem;
+  }
+  .pres-list { display: flex; flex-direction: column; gap: .55rem; }
+  .pres-item {
+    font-size: .95rem;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+  .pres-item .loc { color: var(--muted); }
+  .pres-item .mark { color: var(--accent); }
+  .pres-note {
+    margin-top: 1.25rem;
+    font-family: var(--sans);
+    font-size: .78rem;
+    color: var(--muted-2);
+    font-style: italic;
+  }
+
+  /* ─────────────── TEACHING ─────────────── */
+  .teaching-head {
+    font-family: var(--serif);
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--ink);
+    margin-bottom: .35rem;
+  }
+  .teaching-role {
+    font-family: var(--sans);
+    font-size: .9rem; color: var(--muted);
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  .course-table {
+    border-top: 1px solid var(--rule);
+  }
+  .course-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1.5rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--rule-soft);
+    align-items: baseline;
+  }
+  .course-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .course-meta {
+    margin-top: .35rem;
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    font-family: var(--sans); font-size: .82rem; color: var(--muted);
+  }
+  .course-meta .level {
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .course-syllabus {
+    font-family: var(--sans); font-size: .82rem; font-weight: 500;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: .35rem;
+    white-space: nowrap;
+  }
+  .course-syllabus:hover { color: var(--accent); }
+  .course-syllabus svg { width: 11px; height: 11px; opacity: .7; }
+
+  /* ─────────────── CV ─────────────── */
+  .cv-line {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+  }
+
+  /* ─────────────── FOOTER ─────────────── */
+  footer {
+    padding: 4rem 0 3rem;
+    border-top: 1px solid var(--rule-soft);
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--muted-2);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* fade-in */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  .fade { opacity: 0; animation: fadeUp .6s ease-out forwards; }
+  .d1 { animation-delay: 80ms; }
+  .d2 { animation-delay: 160ms; }
+  .d3 { animation-delay: 240ms; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand">Alberto Pavia <em>— Economics</em></a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#cv">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- HERO -->
+<section id="about" class="hero">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="fade">
+        <div class="portrait">
+          <div class="portrait-placeholder">
+            <div class="monogram">AP</div>
+            <div class="label">bio-photo.jpg</div>
+          </div>
+        </div>
+
+        <div class="meta-list">
+          <a href="mailto:alberto.paviasoto@kuleuven.be">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M3 7l9 6 9-6"/></svg>
+            Email
+          </a>
+          <a href="https://github.com/apaviasoto" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://bsky.app/profile/albertopavia.bsky.social" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 600 530" fill="currentColor"><path d="M135.72 44.03C202.216 93.951 273.74 195.17 300 249.49c26.262-54.316 97.782-155.54 164.28-205.46C512.26 8.009 590-19.862 590 68.825c0 17.712-10.155 148.79-16.111 170.07-20.703 73.984-96.144 92.854-163.25 81.433 117.3 19.964 147.14 86.092 82.697 152.22-122.39 125.59-175.91-31.511-189.63-71.766-2.514-7.38-3.69-10.832-3.708-7.896-.017-2.936-1.193.516-3.707 7.896-13.714 40.255-67.233 197.36-189.63 71.766-64.444-66.128-34.605-132.26 82.697-152.22-67.108 11.421-142.55-7.449-163.25-81.433C20.15 217.615 10 86.535 10 68.825c0-88.687 77.742-60.816 125.72-24.795z"/></svg>
+            Bluesky
+          </a>
+          <a href="https://www.linkedin.com/in/albertopavia" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://orcid.org/0000-0003-0312-3092" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><circle cx="128" cy="128" r="128"/><path fill="#fff" d="M86.3 186.2H70.9V79.1h15.4v107.1zM108.9 79.1h41.6c39.6 0 57 28.3 57 53.6 0 27.5-21.5 53.6-56.8 53.6h-41.8V79.1zm15.4 93.3h24.5c34.9 0 42.9-26.5 42.9-39.7C191.7 111.2 178 93 148 93h-23.7v79.4zM88.7 56.8c0 5.5-4.5 10.1-10.1 10.1s-10.1-4.6-10.1-10.1c0-5.6 4.5-10.1 10.1-10.1s10.1 4.6 10.1 10.1z"/></svg>
+            ORCID
+          </a>
+          <a href="files/paviasoto_academic_cv.pdf" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg>
+            CV (PDF)
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="hero-heading fade d1">Alberto Pavia</h1>
+        <div class="hero-affiliation fade d2">
+          <strong>PhD Candidate in Economics</strong>
+          <span class="sep">·</span>
+          <span>KU Leuven</span>
+          <span class="sep">·</span>
+          <span>Visiting, UC Berkeley 2025–26</span>
+        </div>
+
+        <div class="hero-bio fade d2">
+          <p>I am a PhD candidate in economics at <a href="https://feb.kuleuven.be/research/economics">KU Leuven</a>, advised by <a href="https://sites.google.com/site/proebstingchristian/home">Christian Proebsting</a>. During the academic year 2025–2026 I am visiting the Department of Economics at <a href="https://econ.berkeley.edu/">UC Berkeley</a>, hosted by <a href="https://eml.berkeley.edu/~jsteinsson/">Jón Steinsson</a>, supported by a <a href="https://www.fulbrightschuman.eu/grantees/">Fulbright Schuman grant</a>.</p>
+
+          <p>My research focuses on <strong>macroeconomics</strong> — in particular, how shocks propagate across regions within a country or among countries in a monetary union. I combine granular microdata on local responses to aggregate shocks with structural models to study their implications for aggregate and distributional outcomes.</p>
+
+          <p>My research is funded by the Research Foundation Flanders (FWO) fundamental research grant. I grew up in <a href="https://www.spain.info/en/region/la-rioja/">La Rioja</a>, in Northern Spain. If you'd like to talk about research, <a href="mailto:alberto.paviasoto@kuleuven.be">please get in touch</a>.</p>
+        </div>
+
+        <div class="hero-actions fade d3">
+          <a href="#research" class="btn primary">
+            View research
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="files/paviasoto_academic_cv.pdf" target="_blank" rel="noopener" class="btn">
+            Download CV
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+          </a>
+        </div>
+
+        <div class="hero-logos fade d3">
+          <span class="logo-note">Affiliations</span>
+          <span class="logo-chip">KU Leuven</span>
+          <span class="logo-chip">FWO · Research Foundation Flanders</span>
+          <span class="logo-chip">UC Berkeley (Visiting)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" class="section">
+  <div class="container">
+    <div class="section-grid">
+
+      <div class="section-label">
+        <span class="num">01 / 03</span>
+        Research
+      </div>
+
+      <div class="section-body">
+        <div>
+          <div class="subhead">
+            <span>Working Papers</span>
+            <span class="count">01</span>
+          </div>
+
+          <article class="paper">
+            <h3 class="paper-title">
+              <a href="files/draft%202510.pdf" target="_blank" rel="noopener">The Role of Risk-Sharing in Attenuating Business Cycles Within Currency Unions</a>
+            </h3>
+            <p class="paper-authors">with <a href="https://sites.google.com/site/proebstingchristian/home">Christian Proebsting</a></p>
+
+            <div class="paper-links">
+              <a href="files/draft%202510.pdf" target="_blank" rel="noopener" class="paper-link">
+                Draft (PDF)
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
+
+            <div class="paper-award">Best paper prize &nbsp;·&nbsp; RES PhD Conference 2024</div>
+
+            <div class="paper-abstract">
+              <span class="paper-abstract-label">Abstract</span>
+              The United States is a currency union where multiple risk-sharing mechanisms — migration, fiscal transfers, income diversification and credit markets — buffer consumption from local income fluctuations. We show that risk sharing not only directly smooths consumption but also indirectly stabilizes income by dampening the local multiplier. Combining causal estimates from regional military buildups with a multi-region quantitative model, we find that current levels of risk-sharing cut state-level consumption volatility by a factor of four. Crucially, the indirect stabilization of income accounts for nearly half of this effect, implying substantially larger benefits from integration than conventional measures suggest.
+            </div>
+          </article>
+        </div>
+
+        <div>
+          <div class="subhead">
+            <span>Work in Progress</span>
+            <span class="count">02</span>
+          </div>
+          <div class="wip-list">
+            <div class="wip-item">Capital Adjustment and Regional Fiscal Multipliers</div>
+            <div class="wip-item">Distributional Effects of Military Spending</div>
+          </div>
+        </div>
+
+        <div class="pres">
+          <details class="pres-details">
+            <summary>
+              <svg class="arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+              Presentations (incl. scheduled)
+            </summary>
+
+            <div class="pres-grid">
+              <div class="pres-year-cell">2025</div>
+              <ul class="pres-list">
+                <li class="pres-item">18th RGS Doctoral Conference <span class="loc">— Dortmund, Germany</span></li>
+                <li class="pres-item">T2M <span class="loc">— CREST, France</span></li>
+                <li class="pres-item">5th Sailing the Macro Workshop<span class="mark">*</span> <span class="loc">— Siracusa, Italy</span></li>
+                <li class="pres-item">San Francisco Fed Brownbag <span class="loc">— San Francisco, U.S.</span></li>
+                <li class="pres-item">UC Berkeley Macro Colloquium <span class="loc">— Berkeley, U.S.</span></li>
+              </ul>
+
+              <div class="pres-year-cell">2024</div>
+              <ul class="pres-list">
+                <li class="pres-item">KU Leuven macro seminar <span class="loc">— Leuven, Belgium</span></li>
+                <li class="pres-item">13th PhD Conference in International Macroeconomics <span class="loc">— Paris, France</span></li>
+                <li class="pres-item">Ghent University Workshop on Empirical Macroeconomics <span class="loc">— Ghent, Belgium (poster)</span></li>
+                <li class="pres-item">IAAE 2024 <span class="loc">— Thessaloniki, Greece</span></li>
+                <li class="pres-item">University of Nottingham<span class="mark">*</span> <span class="loc">— Nottingham, UK</span></li>
+                <li class="pres-item">RES PhD Conference 2024 <span class="loc">— Portsmouth, UK</span></li>
+              </ul>
+
+              <div class="pres-year-cell">2023</div>
+              <ul class="pres-list">
+                <li class="pres-item">KU Leuven macro seminar <span class="loc">— Leuven, Belgium</span></li>
+                <li class="pres-item">KOF-ETH Zürich / University of Zurich<span class="mark">*</span> <span class="loc">— Zurich, Switzerland</span></li>
+              </ul>
+            </div>
+
+            <div class="pres-note">* Denotes presentations given by co-author.</div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching" class="section">
+  <div class="container">
+    <div class="section-grid">
+
+      <div class="section-label">
+        <span class="num">02 / 03</span>
+        Teaching
+      </div>
+
+      <div class="section-body">
+        <div>
+          <div class="teaching-head">KU Leuven</div>
+          <div class="teaching-role">Teaching Assistant</div>
+
+          <div class="course-table">
+            <div class="course-row">
+              <div>
+                <div class="course-title">Advanced Topics in Macroeconomics and Policy</div>
+                <div class="course-meta">
+                  <span class="level">Research Master / PhD</span>
+                  <span>2022 – 2023</span>
+                </div>
+              </div>
+              <a href="files/Syllabus_topics.pdf" target="_blank" rel="noopener" class="course-syllabus">
+                Syllabus
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
+            <div class="course-row">
+              <div>
+                <div class="course-title">Introduction to Macroeconomics</div>
+                <div class="course-meta">
+                  <span class="level">Bachelor</span>
+                  <span>2022 – present</span>
+                </div>
+              </div>
+              <a href="files/Syllabus_intro.pdf" target="_blank" rel="noopener" class="course-syllabus">
+                Syllabus
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><path d="M15 3h6v6M10 14L21 3"/></svg>
+              </a>
+            </div>
+            <div class="course-row">
+              <div>
+                <div class="course-title">Master Thesis Supervision</div>
+                <div class="course-meta">
+                  <span class="level">Master</span>
+                  <span>2022 – present</span>
+                </div>
+              </div>
+              <span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv" class="section">
+  <div class="container">
+    <div class="section-grid">
+      <div class="section-label">
+        <span class="num">03 / 03</span>
+        Curriculum Vitae
+      </div>
+      <div class="section-body">
+        <p class="cv-line">
+          For my full record of education, positions, awards, refereeing activity, and references, please see my <a href="files/paviasoto_academic_cv.pdf" target="_blank" rel="noopener">curriculum vitae&nbsp;↗</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:1rem;">
+    <span>© 2026 Alberto Pavia</span>
+    <span>Last updated April 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>

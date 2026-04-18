@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Academic Site Redesign — 3 Directions</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  html, body { margin:0; padding:0; height:100%; background:#f0eee9; font-family:'Inter Tight',system-ui,sans-serif; }
+  * { box-sizing: border-box; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="../design-canvas.jsx"></script>
+<script type="text/babel">
+const variants = [
+  { label: "V1 — Quiet Authority", sub: "Fraunces + Inter Tight · paper-like, ruled, two-column", file: "v1-quiet-authority.html" },
+  { label: "V2 — Journal", sub: "Libre Caslon + IBM Plex · centered editorial, drop caps, journal masthead", file: "v2-journal.html" },
+  { label: "V3 — Study", sub: "Instrument Serif + Source Sans · fixed sidebar, tagged papers, editorial", file: "v3-study.html" },
+];
+
+function Frame({ file }) {
+  return (
+    <iframe
+      src={file}
+      style={{ width: 1280, height: 1600, border: 0, display: 'block', transform: 'scale(0.58)', transformOrigin: 'top left' }}
+    />
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas>
+      <div style={{ padding: '0 60px 30px' }}>
+        <div style={{ fontFamily:'Fraunces,serif', fontSize: 44, fontWeight: 500, letterSpacing:-0.8, color:'#2a2320' }}>
+          Alberto Pavia — Academic Site
+        </div>
+        <div style={{ fontFamily:'Inter Tight,sans-serif', fontSize: 15, color:'rgba(60,50,40,0.7)', marginTop: 6, maxWidth: 720 }}>
+          Three distinct "modern academic" directions. All share: warm cream paper, muted ink-blue accent, placeholder portrait (swap in your <code style={{fontFamily:'JetBrains Mono,monospace', fontSize:13, background:'rgba(0,0,0,0.04)', padding:'1px 4px'}}>bio-photo.jpg</code> + logos to ship), abstract default-open, elegant presentations grouped by year. Click any frame to open full page.
+        </div>
+      </div>
+
+      <DCSection title="Three directions, side by side" subtitle="Each is a complete, shippable take. Scroll inside a frame to see the full page, or click the label to open it fullscreen." gap={60}>
+        {variants.map(v => (
+          <DCArtboard key={v.file} label={v.label} width={1280 * 0.58} height={1600 * 0.58}>
+            <a href={v.file} target="_blank" rel="noopener" style={{ display: 'block', textDecoration: 'none' }}>
+              <Frame file={v.file} />
+            </a>
+          </DCArtboard>
+        ))}
+      </DCSection>
+
+      <DCSection title="Notes on each" gap={60}>
+        {variants.map((v,i) => (
+          <div key={v.file} style={{ width: 1280*0.58, fontFamily: 'Inter Tight,sans-serif', color: '#2a2320' }}>
+            <div style={{ fontFamily:'Fraunces,serif', fontSize: 28, fontWeight: 500, letterSpacing: -0.4, marginBottom: 10 }}>{v.label}</div>
+            <div style={{ fontSize: 14, lineHeight: 1.6, color: 'rgba(60,50,40,0.85)' }}>
+              {i === 0 && (
+                <>
+                  <p><strong>Closest to your current site, refined.</strong> Keeps the two-column hero and section structure, but swaps Inter for a serif/sans pairing (Fraunces for names & paper titles, Inter Tight for UI). Abstract defaults open, set in serif, as proper body copy.</p>
+                  <p>Right-hand affiliation line condenses "Welcome! + Name + Title" into one scannable block — the way a paper's title block reads. Award is an italic footnote (†) rather than a yellow pill.</p>
+                  <p>Best if you want a very <em>safe, timeless</em> academic site.</p>
+                </>
+              )}
+              {i === 1 && (
+                <>
+                  <p><strong>Full editorial / journal aesthetic.</strong> Libre Caslon throughout, small-caps first lines, Roman numerals, centered compositions, decorative rule ornaments, drop-cap abstract. The "masthead" treatment at the top positions you as a publication.</p>
+                  <p>A distinctive, memorable personality — the riskiest but most beautiful option if you like a strong voice.</p>
+                  <p>Best if you want to <em>stand out</em> among a sea of generic academic sites.</p>
+                </>
+              )}
+              {i === 2 && (
+                <>
+                  <p><strong>Fixed left rail with portrait + nav, content scrolls on the right.</strong> Bold italic pull-quote intro, tagged papers (Macro / Currency Unions / Risk Sharing), facts grid, card-based work-in-progress and courses.</p>
+                  <p>Reads more like a researcher's personal magazine. Navigation is always one glance away. Works beautifully on wide monitors.</p>
+                  <p>Best if you want <em>modern editorial polish</em> and rich structure.</p>
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </DCSection>
+
+      <div style={{ padding: '20px 60px 60px', maxWidth: 900 }}>
+        <div style={{ fontFamily:'Fraunces,serif', fontSize: 22, fontWeight:500, marginBottom: 10, color:'#2a2320' }}>Shared across all three</div>
+        <ul style={{ fontFamily:'Inter Tight,sans-serif', fontSize: 14, lineHeight: 1.75, color:'rgba(60,50,40,0.85)', paddingLeft: 18 }}>
+          <li>Warm cream paper background <code style={{fontFamily:'JetBrains Mono,monospace', fontSize:12, background:'rgba(0,0,0,0.04)', padding:'1px 4px'}}>oklch(0.985 0.005 75)</code> — less clinical than pure white, more modern than beige</li>
+          <li>Single muted ink-blue accent <code style={{fontFamily:'JetBrains Mono,monospace', fontSize:12, background:'rgba(0,0,0,0.04)', padding:'1px 4px'}}>oklch(0.38 0.08 250)</code> — scholarly, not tech</li>
+          <li>Sans + serif pairing (not Inter-only) — instant signal that this is an academic page, not a landing page</li>
+          <li>Placeholder portrait with "AP" monogram + monospace filename — swap in <code style={{fontFamily:'JetBrains Mono,monospace', fontSize:12, background:'rgba(0,0,0,0.04)', padding:'1px 4px'}}>bio-photo.jpg</code></li>
+          <li>Abstracts default-visible, set as real reading copy (not collapsed UI)</li>
+          <li>Institutional logos treated as quiet chips, not colored hero decoration</li>
+          <li>Awards treated as typographic annotations, not yellow pills</li>
+          <li>Presentations grouped by year with the year itself set larger in serif — they become the visual rhythm</li>
+        </ul>
+        <div style={{ fontFamily:'Fraunces,serif', fontStyle:'italic', fontSize: 16, marginTop: 24, color:'rgba(60,50,40,0.7)' }}>
+          → Tell me which direction you like and I'll refine that one. Mixing elements across variants is also easy.
+        </div>
+      </div>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>
