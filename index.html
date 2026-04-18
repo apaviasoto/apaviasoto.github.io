@@ -1,7 +1,3 @@
----
-layout: null
-permalink: /
----
 <!DOCTYPE html><html lang="en"><head>
 
 <meta charset="UTF-8">
@@ -286,11 +282,9 @@ permalink: /
   .hero-logos img {
     height: 44px;
     width: auto;
-    opacity: .8;
-    filter: grayscale(0.1);
-    transition: opacity .2s, filter .2s;
+    opacity: 1;
+    filter: none;
   }
-  .hero-logos a:hover img { opacity: 1; filter: grayscale(0); }
   .hero-logos a { display: inline-flex; align-items: center; border-bottom: 0; position: relative; }
   /* Graceful fallback when image file is missing — show alt text styled as chip */
   .hero-logos img {
@@ -439,8 +433,7 @@ permalink: /
     text-transform: uppercase; letter-spacing: .14em;
     color: var(--muted-2);
   }
-  .hero-logos img { height: 36px; width: auto; opacity: .7; filter: grayscale(0.15); transition: opacity .2s; }
-  .hero-logos img:hover { opacity: 1; }
+  .hero-logos img { height: 36px; width: auto; opacity: 1; filter: none; }
   .hero-logos .logo-chip {
     height: 36px; padding: 0 .9rem;
     display: inline-flex; align-items: center;
@@ -798,10 +791,7 @@ permalink: /
 
       <div class="fade">
         <div class="portrait">
-          <div class="portrait-placeholder">
-            <div class="monogram">AP</div>
-            <div class="label">bio-photo.jpg</div>
-          </div>
+          <img src="images/bio-photo.jpg" alt="Alberto Pavia">
         </div>
 
         <div class="meta-list">
