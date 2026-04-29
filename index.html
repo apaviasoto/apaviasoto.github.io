@@ -829,7 +829,7 @@
 
           <p data-cc-id="cc-6">My research focuses on <em>macroeconomics</em>, where I study how shocks propagate across regions within a country or among countries in a monetary union. I combine granular microdata to analyze the local effects of aggregate shocks with structural models to study their implications for aggregate and distributional outcomes.</p>
 
-          <p style="" data-cc-id="cc-2">My research is funded by the Research Foundation Flanders (FWO) fundamental research grant. I grew up in <a href="https://www.spain.info/en/region/la-rioja/" data-cc-id="cc-17">La Rioja</a>, in Northern Spain.&nbsp;<br><br>If you have any comments, thoughts, or simply want to talk about research, <a href="#" class="email-link" data-u="alberto.paviasoto" data-d="kuleuven.be" onclick="event.preventDefault();var a=this.dataset.u,b=this.dataset.d;location.href='mai'+'lto:'+a+'\u0040'+b;">feel free to reach out</a>!</p>
+          <p style="" data-cc-id="cc-2">My research is funded by the Research Foundation Flanders (FWO) fundamental research grant. I grew up in <a href="https://www.spain.info/en/region/la-rioja/" data-cc-id="cc-17">La Rioja</a>, in Northern Spain.&nbsp;<br><br>If you have any comments, thoughts, or simply want to talk about research, feel free to reach out at <a href="#" class="email-link email-inline" data-u="alberto.paviasoto" data-d="kuleuven.be" onclick="event.preventDefault();var a=this.dataset.u,b=this.dataset.d;location.href='mai'+'lto:'+a+'\u0040'+b;"></a>!</p>
         </div>
 
         <div class="hero-logos fade d3">
@@ -1051,6 +1051,13 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
   targets.forEach(el => io.observe(el));
+
+  // Email obfuscation: assemble visible address from data-u/data-d at runtime
+  // so the literal "@" never appears in the static HTML source.
+  document.querySelectorAll('.email-inline').forEach(el => {
+    const u = el.dataset.u, d = el.dataset.d;
+    if (u && d) el.textContent = u + String.fromCharCode(64) + d;
+  });
 })();
 </script>
 

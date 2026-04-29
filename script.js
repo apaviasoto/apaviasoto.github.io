@@ -54,8 +54,13 @@ function closeMobile() {
 // ============================================================
 // EMAIL BUTTON
 // ============================================================
-const EMAIL = 'alberto.paviasoto@kuleuven.be';
+const EMAIL = 'alberto.paviasoto' + String.fromCharCode(64) + 'kuleuven.be';
 let emailRevealed = false;
+
+document.querySelectorAll('.email-inline').forEach(el => {
+  const u = el.dataset.u, d = el.dataset.d;
+  if (u && d) el.textContent = u + String.fromCharCode(64) + d;
+});
 
 function handleEmail() {
   if (!emailRevealed) {
