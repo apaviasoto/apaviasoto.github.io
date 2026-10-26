@@ -19,28 +19,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Source+Sans+3:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 
 <style>
-  /* Type system presets — toggle via Tweaks */
-  :root[data-type='A'] {
-    --serif:   'Instrument Serif', 'Iowan Old Style', Georgia, serif;
-    --display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
-    --sans:    'Source Sans 3', system-ui, sans-serif;
-    --name-ls: 0.06em;
-  }
-  :root[data-type='B'] {
-    --serif:   'Fraunces', 'Iowan Old Style', Georgia, serif;
-    --display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
-    --sans:    'Inter', system-ui, sans-serif;
-    --name-ls: 0.005em;
-  }
-  :root[data-type='C'] {
-    --serif:   'Lora', Georgia, serif;
-    --display: 'Lora', Georgia, serif;
-    --sans:    'Work Sans', system-ui, sans-serif;
-    --name-ls: 0.01em;
-  }
-  :root { }
-</style>
-<style>
   :root {
     --paper:       oklch(0.985 0.005 75);
     --paper-2:     oklch(0.965 0.007 75);
@@ -56,7 +34,7 @@
     --serif:   'Instrument Serif', 'Iowan Old Style', Georgia, serif;
     --display: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
     --sans:    'Source Sans 3', system-ui, -apple-system, Helvetica, sans-serif;
-    --name-ls: 0.015em;
+    --name-ls: 0.06em;
 
     --maxw: 1360px;
   }
@@ -832,9 +810,9 @@
         <div class="hero-bio fade d2" data-cc-id="cc-5">
           <p>I am a PhD candidate in economics at <a href="https://feb.kuleuven.be/research/economics">KU Leuven</a> in Belgium, where I am part of the <a href="https://sites.google.com/view/macro-leuven/">Leuven macro group</a>. My advisor is <a href="https://sites.google.com/site/proebstingchristian/home">Christian Proebsting</a>.</p>
 
-          <p data-cc-id="cc-15">During the academic year 2025–2026, I visited the Department of Economics at <a href="https://econ.berkeley.edu/">UC Berkeley</a>, hosted by <a href="https://eml.berkeley.edu/~jsteinsson/">Jón Steinsson</a>, supported by a <a href="https://www.fulbrightschuman.eu/grantees/" data-cc-id="cc-14">Fulbright Schuman grant</a>.</p>
-
           <p data-cc-id="cc-6">My research focuses on <em>macroeconomics</em>, where I study how shocks propagate across regions within a country or among countries in a monetary union. I combine granular microdata to analyze the local effects of aggregate shocks with structural models to study their implications for aggregate and distributional outcomes.</p>
+
+          <p data-cc-id="cc-15">During the academic year 2025–2026, I visited the Department of Economics at <a href="https://econ.berkeley.edu/">UC Berkeley</a>, hosted by <a href="https://eml.berkeley.edu/~jsteinsson/">Jón Steinsson</a>, supported by a <a href="https://www.fulbrightschuman.eu/grantees/" data-cc-id="cc-14">Fulbright Schuman grant</a>.</p>
 
           <p style="" data-cc-id="cc-2">My research is funded by the Research Foundation Flanders (FWO) fundamental research grant. I grew up in <a href="https://www.spain.info/en/region/la-rioja/" data-cc-id="cc-17">La Rioja</a>, in Northern Spain.&nbsp;<br><br>If you have any comments, thoughts, or simply want to talk about research, feel free to reach out at <a href="#" class="email-link email-inline" data-u="alberto.paviasoto" data-d="kuleuven.be" onclick="event.preventDefault();var a=this.dataset.u,b=this.dataset.d;location.href='mai'+'lto:'+a+'\u0040'+b;"></a>!</p>
         </div>
@@ -1132,67 +1110,5 @@
 })();
 </script>
 
-<!-- Tweaks panel (hidden by default; toggled by the toolbar) -->
-<div id="tweaks-panel" aria-hidden="true" style="
-  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 9999;
-  background: #fff; border: 1px solid rgba(0,0,0,.12); border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.08);
-  padding: 1rem 1.1rem; width: 260px;
-  font-family: 'Source Sans 3', system-ui, sans-serif;
-  display: none;
-">
-  <div style="font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:#666; margin-bottom:.65rem;">Tweaks</div>
-  <div style="font-size:.85rem; font-weight:500; color:#222; margin-bottom:.4rem;">Type system</div>
-  <div id="tweaks-type-opts" style="display:flex; flex-direction:column; gap:.35rem;"></div>
-</div>
-
-<script>
-(function() {
-  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-    "typeSystem": "A"
-  }/*EDITMODE-END*/;
-
-  const PRESETS = [
-    { key: 'A', label: 'A — Instrument Serif + Source Sans', hint: 'Elegant, literary' },
-    { key: 'B', label: 'B — Fraunces + Inter', hint: 'Friendly, humanist' },
-    { key: 'C', label: 'C — Lora + Work Sans', hint: 'Bookish, warm' },
-  ];
-
-  function apply(key) {
-    document.documentElement.setAttribute('data-type', key);
-  }
-  apply(TWEAK_DEFAULTS.typeSystem);
-
-  // Build tweak UI
-  const opts = document.getElementById('tweaks-type-opts');
-  PRESETS.forEach(p => {
-    const wrap = document.createElement('label');
-    wrap.style.cssText = 'display:flex; gap:.5rem; align-items:flex-start; padding:.5rem .6rem; border:1px solid #eee; border-radius:6px; cursor:pointer; font-size:.82rem;';
-    wrap.innerHTML = `
-      <input type="radio" name="tt" value="${p.key}" ${p.key === TWEAK_DEFAULTS.typeSystem ? 'checked' : ''} style="margin-top:.2rem;">
-      <div>
-        <div style="font-weight:500; color:#222;">${p.label}</div>
-        <div style="color:#888; font-size:.75rem; margin-top:.1rem;">${p.hint}</div>
-      </div>`;
-    wrap.querySelector('input').addEventListener('change', e => {
-      const v = e.target.value;
-      apply(v);
-      window.parent.postMessage({type: '__edit_mode_set_keys', edits: {typeSystem: v}}, '*');
-    });
-    opts.appendChild(wrap);
-  });
-
-  // Edit mode protocol
-  window.addEventListener('message', e => {
-    const d = e.data || {};
-    if (d.type === '__activate_edit_mode') {
-      document.getElementById('tweaks-panel').style.display = 'block';
-    } else if (d.type === '__deactivate_edit_mode') {
-      document.getElementById('tweaks-panel').style.display = 'none';
-    }
-  });
-  window.parent.postMessage({type: '__edit_mode_available'}, '*');
-})();
-</script>
 
 </body></html>
